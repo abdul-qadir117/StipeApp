@@ -112,7 +112,8 @@ const CreateGroup = ({ navigation, route }: any) => {
       let images: any = [];
       groupData?.groupPics.map((item: any) => {
         images.push({
-          uri: `${API_BASE_URL}/${item.group_image}`,
+          // uri: `${API_BASE_URL}/${item.group_image}`,
+          uri: `http://api-dev.myscroll.co.uk/${item.group_image}`,
         });
       });
       let prevSubCategories = subCategoriesList?.data;

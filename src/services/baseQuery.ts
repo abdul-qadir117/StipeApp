@@ -3,10 +3,11 @@ import { API_BASE_URL } from '@env';
 import { getStorageData } from '../lib/asyncStorage';
 
 export const baseQuery = fetchBaseQuery({
-  baseUrl: API_BASE_URL,
+  //baseUrl: API_BASE_URL,
+  baseUrl: 'http://api-dev.myscroll.co.uk',
   prepareHeaders: async headers => {
     const token = await getStorageData('token');
-    console.log(token);
+    // console.log(token);
     if (token) {
       return headers.set('Authorization', `Bearer ${token}`);
     }

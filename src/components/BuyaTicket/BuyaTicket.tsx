@@ -72,7 +72,10 @@ const BuyaTicket = ({ navigation }: any) => {
           ]}
           disabled={!isCheckoutEnabled}
           onPress={() => {
-            navigation.navigate('BuyaTicketTest');
+            navigation.navigate('BuyaTicketTest', {
+              totalPrice: totalPrice.toFixed(2),
+              totalTickets: totalTickets,
+            });
           }}>
           <Text style={styles.checkoutButtonText}>Checkout</Text>
         </TouchableOpacity>

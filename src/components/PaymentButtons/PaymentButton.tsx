@@ -6,8 +6,12 @@ import metrics from '../../utils/mertrics';
 import fonts from '../../utils/fonts';
 interface PaymentButtonsProps {
   navigation: any;
+  totalPrice: any;
 }
-const PaymentButtons: React.FC<PaymentButtonsProps> = ({ navigation }) => {
+const PaymentButtons: React.FC<PaymentButtonsProps> = ({
+  navigation,
+  totalPrice,
+}) => {
   const handleAddCard = () => {
     navigation.navigate('AddNewCard');
   };
@@ -22,7 +26,7 @@ const PaymentButtons: React.FC<PaymentButtonsProps> = ({ navigation }) => {
 
   const Prices = {
     ticketPrice: '£25.00',
-    bookingFee: '£10.00',
+    bookingFee: 10.0,
     total: '£35.00',
   };
 
@@ -43,16 +47,18 @@ const PaymentButtons: React.FC<PaymentButtonsProps> = ({ navigation }) => {
       <View style={styles.summaryContainer}>
         <View style={styles.summaryRow}>
           <Text style={styles.summaryText}>Ticket</Text>
-          <Text style={styles.summaryValue}>{Prices.ticketPrice}</Text>
+          <Text style={styles.summaryValue}>{`£${totalPrice}`}</Text>
         </View>
         <View style={styles.summaryRow}>
           <Text style={styles.summaryText}>Booking Fee</Text>
-          <Text style={styles.summaryValue}>{Prices.bookingFee}</Text>
+          <Text style={styles.summaryValue}>{`£${Prices.bookingFee}`}</Text>
         </View>
         <View style={styles.separator} />
         <View style={styles.summaryRow}>
           <Text style={styles.summaryText}>Total</Text>
-          <Text style={styles.summaryValue}>{Prices.total}</Text>
+          <Text style={styles.summaryValue}>
+            {`£${(+totalPrice + Prices.bookingFee).toFixed(2)}`}
+          </Text>
         </View>
       </View>
     </View>
